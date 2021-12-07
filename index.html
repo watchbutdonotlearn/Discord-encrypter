@@ -1,16 +1,13 @@
 <head>
-<style>
-div {
-  white-space: pre-wrap;
-  white-space: -moz-pre-wrap;
-  white-space: -pre-wrap;
-  white-space: -o-pre-wrap;
-  word-wrap: break-word;
-}
-
-
-</style>
-
+  <style>
+  div {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+  }
+  </style>  
 </head>
 <h1>Encrypt/Decrypt Message</h1>
 <script src="aes.js"></script>
@@ -22,14 +19,15 @@ div {
 </form>
 <form name='encryptform'>
   <label for="encmessage">Message to encrypt:</label><br>
-  <input type="text" id="encmessage" name="encmessage" value="">
+  <textarea name="encmessage" form="encryptform" id='encmessage' cols=50 rows=7></textarea>
 </form>
 <form name='decryptform'>
   <label for="decmessage">Message to decrypt:</label><br>
-  <input type="text" id="decmessage" name="decmessage" value="">
+  <textarea name="decmessage" id='decmessage' form="decryptform" cols=50 rows=7></textarea>
 </form>
 <button id='encryptbtn'>encrypt</button>
 <button id='decryptbtn'>decrypt</button>
 
 <div id='messagediv'>
 </div>
+  
