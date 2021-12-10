@@ -43,8 +43,8 @@ d[k>>>24]^e[n>>>16&255]^j[g>>>8&255]^l[h&255]^c[p++],n=d[n>>>24]^e[g>>>16&255]^j
 var token = '';
 var enckey = '';
 
-chrome.storage.local.get(['token', 'enckey'], function(data){
-    token = data.token
+chrome.storage.local.get(['tokenValue', 'enckey'], function(data){
+    token = data.tokenValue
     enckey = data.enckey
 })
 console.log(token)
