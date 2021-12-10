@@ -1,9 +1,8 @@
 # Discord Encrypter
-A chrome extension that modifies Discord to have an encrypted chat function. As this is currently a work in progress, the settings page does not work. You have to hardcode the token and encryption key into the code yourself.
+A chrome extension that modifies Discord to have an encrypted chat function. Note that you will need to input your token and encryption key into the popup page of the extension before use.
 
 
 Coming soon:
-- Working settings page
 - Support for channels that are not direct messages
 - Support for multiple channels
 - Support for multiple encryption keys at once
