@@ -5,12 +5,12 @@ function saveAll(){
     var token = document.getElementById('token').value
     chrome.storage.local.set({tokenValue: token});
     var key = document.getElementById('enckey').value
-    chrome.storage.local.set({enckey: enckey});
+    chrome.storage.local.set({enckey: key});
 }
 
 /*
 function returnvalues(){
-    chrome.storage.local.get(['token', 'enckey'], function(data){
+    chrome.storage.local.get(['tokenValue', 'enckey'], function(data){
         console.log(data.token)
         console.log(data.enckey)
         document.getElementById('token').value = data.token
