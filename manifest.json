@@ -1,0 +1,31 @@
+{
+	"manifest_version": 2,
+	"name": "discordcrypt",
+	"version": "1.0",
+	"description": "Discord message encryption plugin, it gives end-to-end clientside encryption for your messages and files",
+	"background": {
+		"scripts":["background.js"]
+	},
+	"icons": {
+		"16": "logo16.png",
+		"48": "logo48.png",
+		"128": "logo128.png"
+	},
+	"browser_action": {
+        "default_title": "Discord Encrypter",
+        "default_popup": "popup.html"
+	},
+	"permissions": [
+		"storage",
+		"tabs",
+		"https://*.discordapp.com/"
+	],
+	"content_scripts": [ {
+		"js": ["inject.js"],
+		"matches": [
+			"https://*.discord.com/channels/*",
+			"https://*.discord.com/app"
+		],
+		"run_at": "document_end"
+	} ]
+}
