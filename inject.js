@@ -101,15 +101,19 @@ function encrypttext(){
     
 }
 
+function getLastMessage(a){
+    return document.getElementsByClassName('messageListItem-1-jvGY')[document.getElementsByClassName('messageListItem-1-jvGY').length-a];
+}
+
 function decrypttext(){
-    let messageToDecrypt = document.getElementById('decmessage').value
-    let encryptKey = document.forms.keyform.enckey.value
+    let messageToDecrypt = getLastMessage(1).children[0].children[0].children[1].innerText
+    let encryptKey = enckey
     let decryptedMessage = decrypt(messageToDecrypt, encryptKey)
-    console.log(decryptedMessage)
     if(decryptedMessage == ''){
         decryptedMessage = 'Decryption Failed'
     }
-    document.getElementById('messagediv').innerHTML = '<p>Decrypted message:</p><code>' + decryptedMessage + '</code>'
+    console.log(decryptedMessage)
+    getLastMessage(1).children[0].children[0].children[1].innerText = decryptedMessage
 }
 
 //https://stackoverflow.com/questions/34863788/how-to-check-if-an-element-has-been-loaded-on-a-page-before-running-a-script
@@ -132,8 +136,6 @@ function waitForElement(querySelector, timeout=0){
 window.onload=init()
 
 function init(){
-//     document.getElementById('encryptbtn').addEventListener('click', encrypttext)
-//     document.getElementById('decryptbtn').addEventListener('click', decrypttext)
     console.log('page has loaded')
     //wait for textbox to load
     waitForElement('[role=textbox]', 0).then(function(){
@@ -142,12 +144,13 @@ function init(){
         console.log(buttons)
         if(document.getElementById('extensionEncryptButton') == undefined){
             if(document.location.href.length < 62){
-                buttons.innerHTML = '<input type="text" id="extensionEncryptTextbox" name="extensionEncryptText"><button id="extensionEncryptButton">send</button>' + buttons.innerHTML
+                buttons.innerHTML = '<input type="text" id="extensionEncryptTextbox" name="extensionEncryptText"><button id="extensionEncryptButton">send</button><button id="extensionDecryptButton">decrypt</button>' + buttons.innerHTML
                 document.getElementById('extensionEncryptButton').addEventListener('click', encrypttext)
+                document.getElementById('extensionDecryptButton').addEventListener('click', decrypttext)
             }
         }
     })
-    
+    //document.getElementsByClassName('messageListItem-1-jvGY').push = function() { Array.prototype.push.apply(this, arguments);  decrypttext();};
 }
 
 //https://stackoverflow.com/questions/34957319/how-to-listen-for-url-change-with-chrome-extension#50548409

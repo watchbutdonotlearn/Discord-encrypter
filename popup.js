@@ -8,6 +8,7 @@ function saveAll(){
     chrome.storage.local.set({enckey: key});
 }
 
+
 function returnvalues(){
     chrome.storage.local.get(['tokenValue', 'enckey'], function(data){
         console.log(data.tokenValue)
@@ -16,6 +17,7 @@ function returnvalues(){
         document.getElementById('enckey').value = data.enckey
     })
 }
+
 
 window.onload=function(){
     document.getElementById('saveBtn').addEventListener('click', saveAll);
