@@ -106,14 +106,33 @@ function getLastMessage(a){
 }
 
 function decrypttext(){
-    let messageToDecrypt = getLastMessage(1).children[0].children[0].children[1].innerText
-    let encryptKey = enckey
-    let decryptedMessage = decrypt(messageToDecrypt, encryptKey)
-    if(decryptedMessage == ''){
-        decryptedMessage = 'Decryption Failed'
+    for(let i=1; i<document.getElementsByClassName('messageListItem-1-jvGY').length+1; i++){
+        let determineFirstMessage = getLastMessage(i).children[0].children[0].children[1].outerHTML;
+        let messageContentDivNum = 1
+        if(determineFirstMessage.indexOf('<h2 class="header-') !== -1){
+            messageContentDivNum = 2
+            console.log('using second div instead of first in message')
+        }
+        let messageToDecrypt = getLastMessage(i).children[0].children[0].children[messageContentDivNum].innerText
+        let encryptKey = enckey
+        let decryptedMessage;
+        try{
+            decryptedMessage = decrypt(messageToDecrypt, encryptKey)
+        }
+        catch{
+            decryptedMessage = 'Decryption Failed'
+        }
+        if(decryptedMessage == ''){
+            decryptedMessage = 'Decryption Failed'
+        }
+        //console.log(decryptedMessage)
+        if(decryptedMessage == 'Decryption Failed'){
+            //console.log('message ' + i.toString() + ' is not encrypted')
+        }
+        else{
+            getLastMessage(i).children[0].children[0].children[messageContentDivNum].innerText = decryptedMessage
+        }
     }
-    console.log(decryptedMessage)
-    getLastMessage(1).children[0].children[0].children[1].innerText = decryptedMessage
 }
 
 //https://stackoverflow.com/questions/34863788/how-to-check-if-an-element-has-been-loaded-on-a-page-before-running-a-script
