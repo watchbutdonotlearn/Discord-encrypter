@@ -8,4 +8,3 @@ Coming soon:
 - Support for multiple encryption keys at once
 - Fixing issue where the send button will dissapear randomly
 - Add ability to hide the send button on certain channels
-- Working decryption of incoming messages
